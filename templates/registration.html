@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            margin: 0;
+            background-image: url('../static/istockphoto-1211578370-612x612.jpg'); 
+            background-size: cover; 
+            background-repeat: no-repeat;
+            background-position: left left;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        small {
+            font-size: 12px;
+            color: #999;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>User Registration</h1>
+        {% if error %}
+            <p>{{ error }}</p>
+        {% endif %}
+        <form method="POST" action="/">
+            <label for="aadhar">Aadhar Number:</label>
+            <input type="text" name="aadhar" pattern="[0-9]{12}" title="Please enter a 12-digit Aadhar number" required>
+            <small>Format: 12 digits only</small><br>
+            <label for="name">Name:</label>
+            <input type="text" name="name" required><br><br>
+            <input type="submit" value="Register to Vote">
+        </form>
+    </div>
+</body>
+</html>

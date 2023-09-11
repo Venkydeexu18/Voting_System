@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vote</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('../static/bp-miller-yZZEWg6xQ68-unsplash.jpg'); 
+            background-size: cover; 
+            background-repeat: no-repeat;
+            background-position: center center;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .politician {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .politician img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .politician label {
+            margin-left: 5px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .politician {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.politician img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.politician label {
+    margin: 0;
+}
+
+.politician input[type="radio"] {
+    margin: 0;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cast Your Vote</h1>
+        <form method="POST" action="/vote">
+            {% for politician in politicians %}
+            <div class="politician">
+                <img src="{{ politician.logo }}" alt="{{ politician.name }} Logo"><br><br>
+                <label for="vote{{ politician.id }}">{{ politician.name }}</label><br><br>
+                <input type="radio" id="vote{{ politician.id }}" name="vote" value="{{ politician.name }}" required><br>
+
+            </div>
+            {% endfor %}
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
